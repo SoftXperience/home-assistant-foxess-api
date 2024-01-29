@@ -26,3 +26,8 @@ Put content of `custom_components` folder into your Home-Assistant `/config/cust
 Add the integrations from the integrations dashboard. Enter your API key and the inverter serial number.
 
 You can find these data in the FoxESSCloud portal. The API key can be generated in your user profile.
+
+## API calls rate limit
+
+Each API key is limited to 1440 calls per day. As we need 2 calls per update, the update interval is set to 3 minutes
+to have some reserve. Also, it looks like the update interval of the datalogger is also greater than 1 minute.

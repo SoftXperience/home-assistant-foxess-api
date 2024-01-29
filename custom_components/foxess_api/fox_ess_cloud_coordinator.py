@@ -26,7 +26,7 @@ class FoxEssCloudCoordinator(DataUpdateCoordinator[defaultdict]):
             self.serial
         )
 
-        update_interval = timedelta(minutes=2)
+        update_interval = timedelta(minutes=3)
 
         super().__init__(hass, LOGGER, name=DOMAIN, update_interval=update_interval)
 
