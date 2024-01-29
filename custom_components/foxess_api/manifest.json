@@ -1,0 +1,19 @@
+{
+  "domain": "foxess_api",
+  "name": "FoxESSCloud API",
+  "codeowners": [
+    "@SoftXperience"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "rest"
+  ],
+  "documentation": "https://github.com/SoftXperience/home-assistant-foxess-api",
+  "issue_tracker": "https://github.com/SoftXperience/home-assistant-foxess-api/issues",
+  "homekit": {},
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "ssdp": [],
+  "zeroconf": [],
+  "version": "1.0.0"
+}
