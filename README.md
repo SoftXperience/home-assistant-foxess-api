@@ -1,5 +1,9 @@
 # FoxESSCloud API Integration for Home-Assistant
 
+<a href="https://github.com/hacs/default"><img src="https://img.shields.io/badge/HACS-default-sucess"></a>
+<a href="https://github.com/SoftXperience/home-assistant-foxess-api/actions/workflows/hacs.yaml?branch=main"><img src="https://github.com/SoftXperience/home-assistant-foxess-api/actions/workflows/hacs.yaml/badge.svg?branch=main"/></a>
+<a href="https://github.com/SoftXperience/home-assistant-foxess-api/actions/workflows/hassfest.yaml"><img src="https://github.com/SoftXperience/home-assistant-foxess-api/actions/workflows/hassfest.yaml/badge.svg"/></a>
+
 This is a custom component for Home Assistant to provide access to the data of your FoxESS photovoltaics inverter data.
 
 It uses a subset of the official API of FoxESSCloud which can
