@@ -1,11 +1,11 @@
 """The FoxESSCloud API integration."""
 from __future__ import annotations
 
-from config.custom_components.foxess_api.const import CONF_SERIAL
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform, CONF_API_KEY
 from homeassistant.core import HomeAssistant
 
+from .const import CONF_SERIAL
 from .const import DOMAIN, LOGGER
 from .fox_ess_cloud_coordinator import FoxEssCloudCoordinator
 
