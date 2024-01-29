@@ -9,9 +9,9 @@
     "rest"
   ],
   "documentation": "https://github.com/SoftXperience/home-assistant-foxess-api",
-  "issue_tracker": "https://github.com/SoftXperience/home-assistant-foxess-api/issues",
   "homekit": {},
   "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/SoftXperience/home-assistant-foxess-api/issues",
   "requirements": [],
   "ssdp": [],
   "zeroconf": [],
