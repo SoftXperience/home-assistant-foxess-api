@@ -5,13 +5,13 @@ from typing import Any
 
 import voluptuous as vol
 from homeassistant import config_entries
-from homeassistant.components.foxess_api.fox_ess_cloud_api import FoxEssCloudApi
 from homeassistant.const import CONF_API_KEY
 from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.exceptions import HomeAssistantError
 
 from .const import DOMAIN, CONF_SERIAL, LOGGER
+from .fox_ess_cloud_api import FoxEssCloudApi
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {

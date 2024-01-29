@@ -14,3 +14,8 @@ Add this repository to install it.
 
 Put content of `custom_components` folder into your Home-Assistant `/config/custom_components` folder.
 
+## Configuration
+
+Add the integrations from the integrations dashboard. Enter your API key and the inverter serial number.
+
+You can find these data in the FoxESSCloud portal. The API key can be generated in your user profile.

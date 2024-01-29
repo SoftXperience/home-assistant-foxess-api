@@ -1,45 +1,16 @@
 from datetime import datetime
 
-import homeassistant.helpers.config_validation as cv
-# ---- only for platform setup ----
-import voluptuous as vol
 from homeassistant.components.sensor import DOMAIN as SENSOR_DOMAIN
-from homeassistant.components.sensor import (
-    PLATFORM_SCHEMA
-)
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_API_KEY
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import CONF_SERIAL
 from .const import DOMAIN, LOGGER, API_VERSION
 from .fox_ess_cloud_coordinator import FoxEssCloudCoordinator
 from .sensor_descriptions import SENSORS, FoxEssEntityDescription
-
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
-    {
-        vol.Required(CONF_API_KEY): cv.string,
-        vol.Required(CONF_SERIAL): cv.string,
-    }
-)
-
-
-async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    api_key = config.get(CONF_API_KEY)
-    serial = config.get(CONF_SERIAL)
-    LOGGER.info("Setup FoxESSCloud API from platform config with api-key / serial: %s / %s", api_key, serial)
-    coordinator = FoxEssCloudCoordinator(hass, api_key, serial)
-    await coordinator.async_config_entry_first_refresh()
-    await add_sensors(async_add_entities, coordinator, serial)
-
-    return True
-
-
-# ---- only for platform setup ----
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback) -> None:
