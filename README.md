@@ -1,4 +1,4 @@
-# FoxESS Cloud API Integration for Home-Assistant
+# FoxESSCloud API Integration for Home-Assistant
 
 This is a custom component for Home Assistant to provide access to the data of your FoxESS photovoltaics inverter data.
 
@@ -7,8 +7,11 @@ be [found here](https://www.foxesscloud.com/public/i18n/en/OpenApiDocument.html)
 
 ## Installation
 
-Use [hacs.xyz](https://hacs.xyz) to install and uppdate it.
-Add this repository to install it.
+Use [hacs.xyz](https://hacs.xyz) to install and update it.
+
+Add `https://github.com/SoftXperience/home-assistant-foxess-api` to the user-defined repositories.
+
+Then install this integration.
 
 ## Manual installation
 
