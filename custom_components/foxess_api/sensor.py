@@ -88,12 +88,16 @@ class FoxEssSensorEntity(CoordinatorEntity[FoxEssCloudCoordinator], SensorEntity
             try:
                 return self.entity_description.state(self.coordinator.data)
             except KeyError:
-                LOGGER.warning("Could not get state for %s. If this error persists, check API for changes. ",
-                               "(Current version is %s)", self.entity_description.key, API_VERSION)
+                LOGGER.warning("Could not get state for %s. If this error persists, "
+                               "check API for changes. (Current version is %s)",
+                               self.entity_description.key,
+                               API_VERSION)
                 return None
             except TypeError:
-                LOGGER.warning("Type error for %s. If this error persists, check API for changes. ",
-                               "(Current version is %s)", self.entity_description.key, API_VERSION)
+                LOGGER.warning("Type error for %s. If this error persists, "
+                               "check API for changes. (Current version is %s)",
+                               self.entity_description.key,
+                               API_VERSION)
                 return None
             except Exception as e:
                 LOGGER.error(e)
