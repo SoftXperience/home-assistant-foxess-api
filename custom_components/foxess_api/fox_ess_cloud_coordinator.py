@@ -11,12 +11,8 @@ from .fox_ess_cloud_api import FoxEssCloudApi
 class FoxEssCloudCoordinator(DataUpdateCoordinator[defaultdict]):
     """FoxEssCloudCoordinator"""
 
-    # config_entry: ConfigEntry
-
-    # def __init__(self, hass: HomeAssistant, entry: ConfigEntry) -> None:
     def __init__(self, hass: HomeAssistant, api_key, serial) -> None:
         """Initialize the coordinator."""
-        # self.config_entry = entry
 
         self.serial = serial
 
