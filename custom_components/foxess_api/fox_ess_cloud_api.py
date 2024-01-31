@@ -181,7 +181,7 @@ class FoxEssCloudApi:
                         value_sum = 0.0
                         for value in dataset["values"]:
                             value_sum += float(value)
-                        self.allData["report"][variable] = value_sum
+                        self.allData["report"][variable] = round(value_sum, 3)
                     except KeyError:
                         LOGGER.warning("Could not parse dataset data. If this error persists, check API for changes. "
                                        "(Current version is %s)", API_VERSION)
