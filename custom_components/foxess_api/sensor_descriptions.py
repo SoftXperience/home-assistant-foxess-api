@@ -750,7 +750,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         realtime=False
     ),
     FoxEssEntityDescription(
-        key="charged_energy_total",
+        key="daily_charged_energy_total",
         name="Daily Charged Energy Total",
         icon="mdi:battery-plus-outline",
         device_class=SensorDeviceClass.ENERGY,
@@ -761,7 +761,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         realtime=False
     ),
     FoxEssEntityDescription(
-        key="discharged_energy_total",
+        key="daily_discharged_energy_total",
         name="Daily Discharged Energy Total",
         icon="mdi:battery-minus-outline",
         device_class=SensorDeviceClass.ENERGY,
