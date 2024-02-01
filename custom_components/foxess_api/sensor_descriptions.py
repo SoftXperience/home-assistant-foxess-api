@@ -701,7 +701,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=PERCENTAGE,
         variable="SoC",
         state=lambda data: data["realtime"]["SoC"],
-        process=lambda value: round_if_numeric(value, 0),
+        process=lambda value: round_if_numeric(value, None),
     ),
     FoxEssEntityDescription(
         key="residual_energy",
