@@ -8,10 +8,18 @@ from homeassistant.const import UnitOfPower, PERCENTAGE, UnitOfEnergy, UnitOfEle
     UnitOfTemperature, UnitOfFrequency
 
 
+def round_if_numeric(value: Any, decimals: int):
+    if type(value) in (int, float):
+        return round(value, decimals)
+    else:
+        return value
+
+
 @dataclass(frozen=True)
 class FoxEssEntityDescription(SensorEntityDescription):
     variable: str | None = None
     state: Callable[[defaultdict], Any] | None = None
+    process: Callable[[Any], Any] | None = lambda value: round_if_numeric(value, 3)
     realtime: bool = True
 
 
@@ -24,6 +32,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         device_class=SensorDeviceClass.TIMESTAMP,
         variable="",
         state=lambda data: data["last_update"],
+        process=None
     ),
     FoxEssEntityDescription(
         key="pv_power",
@@ -535,6 +544,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         variable="batTemperature",
         state=lambda data: data["realtime"]["batTemperature"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     FoxEssEntityDescription(
         key="ambient_temperature",
@@ -545,6 +555,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         variable="ambientTemperation",
         state=lambda data: data["realtime"]["ambientTemperation"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     FoxEssEntityDescription(
         key="inv_temperature",
@@ -555,6 +566,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         variable="invTemperation",
         state=lambda data: data["realtime"]["invTemperation"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     FoxEssEntityDescription(
         key="boost_temperature",
@@ -565,6 +577,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         variable="boostTemperation",
         state=lambda data: data["realtime"]["boostTemperation"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     FoxEssEntityDescription(
         key="charge_temperature",
@@ -575,6 +588,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         variable="chargeTemperature",
         state=lambda data: data["realtime"]["chargeTemperature"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     FoxEssEntityDescription(
         key="dsp_temperature",
@@ -585,6 +599,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         variable="dspTemperature",
         state=lambda data: data["realtime"]["dspTemperature"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     # end of temperatures
 
@@ -598,6 +613,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfFrequency.HERTZ,
         variable="RFreq",
         state=lambda data: data["realtime"]["RFreq"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     FoxEssEntityDescription(
         key="s_frequency",
@@ -608,6 +624,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfFrequency.HERTZ,
         variable="SFreq",
         state=lambda data: data["realtime"]["SFreq"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     FoxEssEntityDescription(
         key="t_frequency",
@@ -618,6 +635,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=UnitOfFrequency.HERTZ,
         variable="TFreq",
         state=lambda data: data["realtime"]["TFreq"],
+        process=lambda value: round_if_numeric(value, 1),
     ),
     # end of frequencies
 
@@ -683,6 +701,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
         native_unit_of_measurement=PERCENTAGE,
         variable="SoC",
         state=lambda data: data["realtime"]["SoC"],
+        process=lambda value: round_if_numeric(value, 0),
     ),
     FoxEssEntityDescription(
         key="residual_energy",
@@ -732,7 +751,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
     ),
     FoxEssEntityDescription(
         key="charged_energy_total",
-        name="Charged Energy Total",
+        name="Daily Charged Energy Total",
         icon="mdi:battery-plus-outline",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
@@ -743,7 +762,7 @@ SENSORS: tuple[FoxEssEntityDescription, ...] = (
     ),
     FoxEssEntityDescription(
         key="discharged_energy_total",
-        name="Discharged Energy Total",
+        name="Daily Discharged Energy Total",
         icon="mdi:battery-minus-outline",
         device_class=SensorDeviceClass.ENERGY,
         state_class=SensorStateClass.TOTAL_INCREASING,
