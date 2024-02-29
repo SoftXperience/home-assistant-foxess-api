@@ -2,7 +2,6 @@ import hashlib
 import json
 import time
 from datetime import datetime
-
 from homeassistant.components.rest.data import RestData
 
 from .const import BASE_URL, LOGGER, API_VERSION
@@ -180,7 +179,8 @@ class FoxEssCloudApi:
                         variable = dataset["variable"]
                         value_sum = 0.0
                         for value in dataset["values"]:
-                            value_sum += float(value)
+                            if value is not None:
+                                value_sum += float(value)
                         self.allData["report"][variable] = round(value_sum, 3)
                     except KeyError:
                         LOGGER.warning("Could not parse dataset data. If this error persists, check API for changes. "
