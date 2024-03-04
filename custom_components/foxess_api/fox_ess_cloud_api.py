@@ -55,7 +55,8 @@ class FoxEssCloudApi:
                               query_params,
                               request_body,
                               False,
-                              "python_default")
+                              "python_default",
+                              60)
             await client.async_update()
 
             response = client.data
